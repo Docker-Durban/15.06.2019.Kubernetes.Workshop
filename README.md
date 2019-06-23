@@ -74,7 +74,32 @@ Name the image by tagging the image:
 
 ### Run Image as a container
 
-    docker run awesome-sauce:1
+    docker run -d -p 81:80 --rm awesome-sauce:1
+
+Break down this command:
+
+    [docker runtime] [action] -[option: detached] -[option: bind ports] -[option: remove if existed] [image: required image]
+
+![docker run command](./images/docker-run-command.png)
+Open the browser and go to [http://localhost:81](http://localhost:81):
+
+![Awesome Sauce](./images/docker-run-browser.png)
+
+### Running Containers
+
+A quick way to get a list of the running containers is by running:
+
+    docker ps
+
+![docker running containers](./images/docker-runnning-containers.png)
+
+### Stop the container
+
+To stop the container, use the name for the container from the docker ps command and run the docker kill <container-name>.
+
+    docker kill brave_austin
+
+![docker kill container](./images/docker-kill-container.png)
 
 ### Sharing Images
 
