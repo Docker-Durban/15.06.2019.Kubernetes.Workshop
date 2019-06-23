@@ -1,10 +1,13 @@
 # 29.06.2019 Kubernetes Workshop
 
+![maskots](./images/docker-maskots.jpg)
+
 This is to hold the slides and all demo material for the meetup / workshop
 
 ## Requirements
 
-- Docker Desktop
+- git [***source control system***]
+- Docker Desktop [***container management tool***]
 
 `Download the Docker Desktop application and install, if on Windows 10 switch to Linux context by clicking the Switch to Linux option from the whale in the tray.`
 
@@ -38,6 +41,8 @@ A documented specification what how to create your application so that it can be
     ADD default.conf /etc/nginx/conf.d/default.conf
     COPY --from=build /home/app/dist/minutz /usr/share/nginx/html
     EXPOSE 80
+
+![docker build](./images/dockerbuild.png)
 
 ### Docker Image
 
