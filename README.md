@@ -85,7 +85,7 @@ Open the browser and go to [http://localhost:81](http://localhost:81):
 
 ![Awesome Sauce](./images/docker-run-browser.png)
 
-### Running Containers
+### Checking Containers
 
 A quick way to get a list of the running containers is by running:
 
@@ -103,9 +103,32 @@ To stop the container, use the name for the container from the docker ps command
 
 ### Sharing Images
 
-Share your image with others as sharing is caring.
+### Login
 
-    docker push awesome-sauce:1
+To push images you need to login to the image repository, after creating an account on Docker Hub, simply run:
+
+    docker login -u <username> -p <password>
+
+**Example:**
+
+![docker login](./images/docker-login.png)
+
+Share your image with others as sharing is caring.
+After creating the repository on docker Hub, lets re-tag the image as per the Docker hub repository by running:
+
+    docker tag <image-hash> <new-name>
+
+**Example:**
+
+    docker tag 38cb7753b9e8 dockerdurban/awesome-sauce
+
+Now that we have a image tagged in our accounts namespace we can simply push the image:
+
+    docker push dockerdurban/awesome-sauce:1
+
+**Example:**
+
+![](./images/docker-push.png)
 
 ### Docker Compose
 
