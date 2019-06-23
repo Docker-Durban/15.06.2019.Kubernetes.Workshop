@@ -128,7 +128,9 @@ Now that we have a image tagged in our accounts namespace we can simply push the
 
 **Example:**
 
-![](./images/docker-push.png)
+![docker push image](./images/docker-push.png)
+
+To see the pushed image open a browser and go to: [dockerdurban/awesome-sauce](https://cloud.docker.com/repository/registry-1.docker.io/dockerdurban/awesome-sauce).
 
 ### Docker Compose
 
