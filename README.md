@@ -21,6 +21,8 @@ Docker is a tool designed to make it easier to create, deploy, and run applicati
 
 ### Dockerfile
 
+`Navigate to the folder: 15.06.2019.Kubernetes.Workshop/demo/dockerfile`
+
 A documented specification what how to create your application so that it can be executed.
 
 **Example:**
@@ -31,18 +33,16 @@ A documented specification what how to create your application so that it can be
     ENV HOME=/home/app
     WORKDIR $HOME
     RUN npm install -g @angular/cli@6.0.0 \
-    && npm install @angular/compiler-cli@6.0.0 --save \
-    && npm install yarn
-    COPY . .
+        && npm install @angular/compiler-cli@6.0.0 --save \
+        && npm install yarn
+    COPY awesome-sauce .
     RUN yarn install
-    RUN ng build --configuration=beta
+    RUN ng build
 
     FROM nginx
     ADD default.conf /etc/nginx/conf.d/default.conf
-    COPY --from=build /home/app/dist/minutz /usr/share/nginx/html
+    COPY --from=build /home/app/dist/awesome-sauce /usr/share/nginx/html
     EXPOSE 80
-
-![docker build](./images/dockerbuild.png)
 
 ### Docker Image
 
@@ -50,9 +50,27 @@ A compiled specification of your software stored in a repository.
 
     docker build .
 
+**Example: Docker will get the missing images**
+
+![docker build](./images/dockerbuild.png)
+
+**Example**
+
+![docker get packages](./images/docker-build-get-packages.png)
+
+After the build you can see the images created by running:
+
+    docker images
+
+**Example: docker images untagged**
+
+![docker untagged images](./images/docker-images-untagged.png)
+
 Name the image by tagging the image:
 
     docker build -t awesome-sauce:1 .
+
+![tagged image](./images/docker-images-tagged.png)
 
 ### Run Image as a container
 
