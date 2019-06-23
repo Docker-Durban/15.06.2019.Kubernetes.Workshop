@@ -144,7 +144,7 @@ Docker comes with a tool to orchestrate your applications in a simple manner wit
 
     services:
         web:
-          image: dockerdurban/awesome-sauce:1
+          image: awesome-sauce:1
           ports:
               - '8090:80'
         cache:
@@ -159,15 +159,41 @@ To run the deployment you can use the command `docker-compose up` in the directo
 
     docker-compose up
 
+**Example**
+
+![docker compose terminal](./images/docker-compose-terminal.png)
+
+Open the browser to the port in the docker-compose.yml file i.e. 8090
+
+![docker compose one](./images/docker-compose-one-localhost.png)
+
 To bring the deployment down simple cancel the terminal and the engine will gracefully kill the containers.
+
+![kill compose](./images/first-kill-compose.png)
 
 To run the deployment as a service run:
 
     docker-compose up -d
 
+**example**
+
+![detached docker compose](./images/docker-compose-detached.png)
+
+To see what deployments are running run the command:
+
+    docker-compose ps
+
+**Example:**
+
+![docker compose list](./images/docker-compose-list.png)
+
 That will detach the terminal and the deployment will run. To remove the deployment run the command:
 
     docker-compose down
+
+**Example:**
+
+![docker compose down](./images/docker-compose-down.png)
 
 **_For more information check out [Docker-Compose Deploy Stack](https://docs.docker.com/engine/swarm/stack-deploy/)_**
 

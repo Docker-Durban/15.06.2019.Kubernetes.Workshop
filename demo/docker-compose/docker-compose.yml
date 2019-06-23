@@ -2,7 +2,7 @@
 
     services:
         web:
-          image: dockerdurban/awesome-sauce:1
+          image: awesome-sauce:1
           ports:
               - '8090:80'
         cache:
