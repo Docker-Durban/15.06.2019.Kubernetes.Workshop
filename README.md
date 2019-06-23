@@ -134,7 +134,9 @@ Now that we have a image tagged in our accounts namespace we can simply push the
 
 ![docker compose image](./images/docker-compose.png)
 
-Docker comes with a tool to orchestrate your applications in a simple manner with a .yml file.
+Docker comes with a tool to orchestrate your applications in a simple manner with a .yml file definition.
+
+`Navigate to the folder: 15.06.2019.Kubernetes.Workshop/demo/docker-compose`
 
 **Example:**
 
@@ -142,9 +144,30 @@ Docker comes with a tool to orchestrate your applications in a simple manner wit
 
     services:
         web:
-        image: registry.gitlab.com/minutz/web:1
-        ports:
-            - '8090:80'
+          image: dockerdurban/awesome-sauce:1
+          ports:
+              - '8090:80'
+        cache:
+          image: redis:alpine
+
+In this folder we have the docker-compose.yml which has the stack specification that is required for a deployment.
+
+- website that we created
+- some backend service, in this example a redis server
+
+To run the deployment you can use the command `docker-compose up` in the directory that you have the file.
+
+    docker-compose up
+
+To bring the deployment down simple cancel the terminal and the engine will gracefully kill the containers.
+
+To run the deployment as a service run:
+
+    docker-compose up -d
+
+That will detach the terminal and the deployment will run. To remove the deployment run the command:
+
+    docker-compose down
 
 **_For more information check out [Docker-Compose Deploy Stack](https://docs.docker.com/engine/swarm/stack-deploy/)_**
 
