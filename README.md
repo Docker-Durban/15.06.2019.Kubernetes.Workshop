@@ -65,6 +65,8 @@ Share your image with others as sharing is caring.
 
 Docker comes with a tool to orchestrate your applications in a simple manner with a .yml file.
 
+**Example:**
+
     version: '3'
 
     services:
@@ -73,17 +75,29 @@ Docker comes with a tool to orchestrate your applications in a simple manner wit
         ports:
             - '8090:80'
 
+**_For more information check out [Docker-Compose Deploy Stack](https://docs.docker.com/engine/swarm/stack-deploy/)_**
+
 ## Kubernetes : 101
+
+### What is Kubernetes
+
+Kubernetes is an open-source container-orchestration system for automating application deployment, scaling, and management.
+
+It was originally designed by Google, and is now maintained by the Cloud Native Computing Foundation.
 
 ![demo one deploy stack](./images/kubernets-logo.png)
 
-## Get Kubernetes on your machine
+### Get Kubernetes on your machine
 
 Click on the Docker desktop application, then click preferences / settings select Kubernetes and check enable Kubernetes.
 
 ![demo one deploy stack](./images/enable-kube-docker.png)
 
-## Check that all is working
+## kubectl
+
+kubectl controls the Kubernetes cluster manager.
+
+### Check that all is working
 
 kubectl get nodes
 
@@ -107,6 +121,26 @@ Set the orchestrator when deploying:
 ### Remove Stack
 
     docker stack rm demo-one-stack
+
+## Kubernetes top level
+
+- **kubectl apply** : Manages applications through files defining Kubernetes resources. It creates and updates resources in a cluster.
+
+**Examples**
+
+    kubectl apply -f ./my-manifest.yaml           # create resource(s)
+    kubectl apply -f ./my1.yaml -f ./my2.yaml     # create from multiple files
+    kubectl apply -f ./dir                        # create resource(s) in all manifest files in dir
+    kubectl apply -f https://git.io/vPieo         # create resource(s) from url
+    kubectl create deployment nginx --image=nginx  # start a single instance of nginx
+    kubectl explain pods,svc                       # get the documentation for pod and svc manifests
+
+- **kubectl get services**: List all services in the namespace
+- **kubectl get pods --all-namespaces**: List all pods in all namespaces
+- **kubectl get deployment my-dep**: List a particular deployment
+- **kubectl describe pods my-pod**: Describe commands with verbose output
+
+**_For more check out [kubectl Cheat Sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)_**
 
 ## Kubernetes Dashboard
 
@@ -133,3 +167,17 @@ Copy and paste into a browser:
 ### Set the config file to the dashboard
 
 - Click on Kubeconfig and select the “config” file under /users/<username>.kube\config
+
+Once logged in you will see the dashboard.
+
+![kubernetes dashboard](./images/kubernetes-dashboard.png)
+
+### Nodes in your cluster
+
+![kubernetes dashboard](./images/kub-nodes-dashboard.png)
+
+### Roles in your cluster
+
+![kubernetes dashboard](./images/roles-kube-dashboard.png)
+
+To Stop the dashboard simply exit the proxy command from earlier.
