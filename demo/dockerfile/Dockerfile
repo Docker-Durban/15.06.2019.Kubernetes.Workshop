@@ -6,7 +6,7 @@ WORKDIR $HOME
 RUN npm install -g @angular/cli@6.0.0 \
     && npm install @angular/compiler-cli@6.0.0 --save \
     && npm install yarn
-COPY . .
+COPY awesome-sauce .
 RUN yarn install
 RUN ng build
 
