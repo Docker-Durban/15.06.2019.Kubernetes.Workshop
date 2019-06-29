@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Deployment
+metadata:
+  name: awesome
+  labels:
+    app: awesome
+spec:
+  containers:
+    - name: awesome-sauce-app
+      image: awesome-sauce:1
+      ports:
+      - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: awesome
+  name: awesome-service
+  namespace: default
+spec:
+  selector:
+    app: awesome
+  type: LoadBalancer
+  ports:
+    - port: 2000
