@@ -1,26 +1,33 @@
-apiVersion: v1
+apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
-  name: awesome
-  labels:
-    app: awesome
+  name: nginx-deployment
 spec:
-  containers:
-    - name: awesome-sauce-app
-      image: awesome-sauce:1
-      ports:
-      - containerPort: 80
+  selector:
+    matchLabels:
+      app: nginx-app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: nginx-app
+    spec:
+      containers:
+      - name: nginx
+        image: awesome-sauce:1
+        ports:
+        - containerPort: 80
 ---
 apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: awesome
-  name: awesome-service
+    app: nginx-app
+  name: nginx-svc
   namespace: default
 spec:
-  selector:
-    app: awesome
-  type: LoadBalancer
+  type: LoadBalancer  # use LoadBalancer as type here
   ports:
-    - port: 2000
+    - port: 80
+  selector:
+    app: nginx-app

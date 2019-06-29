@@ -207,6 +207,8 @@ Kubernetes is an open-source container-orchestration system for automating appli
 
 It was originally designed by Google, and is now maintained by the Cloud Native Computing Foundation.
 
+`Navigate to the folder: 15.06.2019.Kubernetes.Workshop/demo/kubernetes`
+
 ![demo one deploy stack](./images/kubernets-logo.png)
 
 ### Get Kubernetes on your machine
@@ -303,3 +305,25 @@ Once logged in you will see the dashboard.
 ![kubernetes dashboard](./images/roles-kube-dashboard.png)
 
 To Stop the dashboard simply exit the proxy command from earlier.
+
+## Terminology
+
+## Pod
+
+A unit of work, contains one or more containers
+
+### Node
+
+A worker machine in Kubernetes, part of a cluster.
+
+### Cluster
+
+A set of Nodes that run containerized applications managed by Kubernetes. For this example, and in most common Kubernetes deployments, nodes in the cluster are not part of the public internet.
+
+### Service
+
+A Kubernetes Service that identifies a set of Pods using label selectors. Unless mentioned otherwise, Services are assumed to have virtual IPs only routable within the cluster network.
+
+### Demo
+
+    kubectl apply -f awesome-sauce-deploy.yaml
