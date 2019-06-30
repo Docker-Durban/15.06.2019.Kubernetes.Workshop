@@ -5,9 +5,11 @@ ENV HOME=/home/app
 WORKDIR $HOME
 RUN npm install -g @angular/cli@6.0.0 \
     && npm install @angular/compiler-cli@6.0.0 --save \
-    && npm install yarn
+    && npm install yarn \
+    && npm config set strict-ssl=false
+
 COPY awesome-sauce .
-RUN yarn install
+RUN npm install
 RUN ng build
 
 FROM nginx
